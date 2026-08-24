@@ -7,7 +7,6 @@
   <p>A local-first Rust protocol for turning engineering principles into inspectable, repeatable validation.</p>
 
   <p>
-    <a href="#features">Features</a> ·
     <a href="#how-it-works">How It Works</a> ·
     <a href="#getting-started">Getting Started</a> ·
     <a href="#contributing">Contributing</a>
@@ -31,18 +30,44 @@ engineering preferences to be explicit data instead of undocumented taste.
 > validated local profiles; OCI/IPFS distribution is not implemented yet. Use
 > the current checkout and test results as the source of truth.
 
-## Features
+**LMP** is a stateful, autonomous protocol engineered to solve the core critique of contemporary AI code generation: syntactic fluency without architectural wisdom. While standard LLMs generate internet-average code that compiles but introduces structural regressions, Lending-Mind establishes a dynamic registry of **Semantic Synchrony Skills**. It moves beyond generic, static system markdown prompts by treating elite human engineering styles as version-controlled, executable blueprints.
 
-| Feature | Description | Entry point |
-| --- | --- | --- |
-| Workspace daemon | Watches changed Rust files and reports profile violations. | `lmpd` |
-| Shared AST validation | Parses source with `syn`, checks function density, and detects configured AST risks. | `lmp-core` |
-| Engineering profiles | Stores axioms, telemetry limits, and skill rules as JSON. | `registry/definitions/` |
-| MCP adapter | Exposes recursive workspace audits over JSON-RPC stdio. | `lmp-mcp` |
-| Profile synchronization | Validates and copies a local profile into a consumer workspace. | `lmp-sync` |
-| Cryptographic signing | Signs exact profile bytes and verifies Ed25519 signatures. | `mind-signer` |
-| Benchmark harness | Compares compliant and intentionally bloated repositories. | `orchestrator/` |
-| Consumer bootstrap | Creates a local telemetry directory and baseline profile. | `packages/create-lmp/` |
+The system derives its name from its core capability: it **lends the technical mindset of industry giants** who have spent decades navigating hardware constraints, software lifecycles, and scaling trade-offs. Rather than attempting to prompt an agent with basic style guides, Lending-Mind aggregates an individual creator’s or enterprise team’s complete digital footprint. It ingests their software philosophy, technical methodologies, core architectural beliefs, historical trade-off calculations, code implementations, blogs, and public post-mortems.
+
+By restructuring this multi-dimensional footprint into content-addressed configurations, the protocol enables **generative mimicry** across advanced AI agent networks. Whether inheriting the defensive C-maximalism of the Linux Kernel team or the edge-first, framework-agnostic minimalism of Vercel’s principal engineers, the agent's internal monologue is forced to evaluate code options through that master's technical framework. It explicitly mimics how they handle memory boundaries, optimize routing pathways, or restrict data isolation layers.
+
+Crucially, the Lending-Mind Protocol operates as an evolving, closed-loop engine. When an AI developer agent outputs a patch, a local daemon processes the file through static AST parsing rules and physical sandbox virtualization layers to compute hardware performance metrics. If the code adheres to the selected mind profile, the system creates a signed telemetry attestation. These learned artifacts are dynamically synchronized and pushed back to a decentralized, remote network protocol layer (OCI registries and IPFS). Over time, this pipeline continuously trains and optimizes the mind's behavioral weights. The platform ultimately bridges the gap between AI code generation and human craftsmanship, ensuring autonomous agents deliver production-grade code that reflects real-world engineering wisdom.
+
+## How It Works
+
+LMP follows a small validation loop:
+
+```text
+Engineering profile
+        │
+        ▼
+Profile loader ──────────────┐
+        │                    │
+        ▼                    ▼
+   lmpd watcher          lmp-sync copy
+        │
+        ▼
+  Changed Rust file
+        │
+        ▼
+ lmp-core / syn parser
+        │
+        ▼
+  Violation feedback
+```
+
+1. Resolve a profile directly or with `--mind-select <alias>`.
+2. Load it into the shared `MindSchema`; optional fields receive safe defaults.
+3. Receive a source change from `notify`, or an audit request through MCP.
+4. Parse the Rust file with `syn`.
+5. Check function statement density, async naming, lock/blocking patterns, and
+   configured forbidden AST nodes.
+6. Return file-specific validation feedback.
 
 ## Getting Started
 
@@ -84,37 +109,6 @@ cargo run --bin lmp-sync -- \
 ```
 
 The profile is loaded through `lmp-core` before it is copied.
-
-## How It Works
-
-LMP follows a small validation loop:
-
-```text
-Engineering profile
-        │
-        ▼
-Profile loader ──────────────┐
-        │                    │
-        ▼                    ▼
-   lmpd watcher          lmp-sync copy
-        │
-        ▼
-  Changed Rust file
-        │
-        ▼
- lmp-core / syn parser
-        │
-        ▼
-  Violation feedback
-```
-
-1. Resolve a profile directly or with `--mind-select <alias>`.
-2. Load it into the shared `MindSchema`; optional fields receive safe defaults.
-3. Receive a source change from `notify`, or an audit request through MCP.
-4. Parse the Rust file with `syn`.
-5. Check function statement density, async naming, lock/blocking patterns, and
-   configured forbidden AST nodes.
-6. Return file-specific validation feedback.
 
 ### Core components
 
