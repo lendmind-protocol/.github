@@ -189,7 +189,7 @@ cached `base64ct` release that requires Edition 2024 support.
 
 Contributions are welcome.
 
-1. Read [CONTRIBUTING.md](https://github.com/lendmind-protocol/awesome-lending-minds/CONTRIBUTING.md) and [CODE_OF_CONDUCT.md](https://github.com/lendmind-protocol/awesome-lending-minds/CODE_OF_CONDUCT.md) before participating.
+1. Read [CONTRIBUTING.md](https://github.com/lendmind-protocol/LMP/CONTRIBUTING.md) and [CODE_OF_CONDUCT.md](https://github.com/lendmind-protocol/LMP/CODE_OF_CONDUCT.md) before participating.
 2. Make the smallest focused change that solves the problem.
 3. Keep validation logic in `lmp-core`; do not duplicate it in adapters.
 4. Add or update a focused regression test for non-trivial behavior.
@@ -199,9 +199,9 @@ Contributions are welcome.
 
 ## License
 
-Lending-Mind Protocol is licensed under the [MIT License](https://github.com/lendmind-protocol/awesome-lending-minds/LICENSE).
+Lending-Mind Protocol is licensed under the [MIT License](https://github.com/lendmind-protocol/LMP/LICENSE).
 
-See also: [Notices](https://github.com/lendmind-protocol/awesome-lending-minds/NOTICE.md) · [Security Policy](https://github.com/lendmind-protocol/awesome-lending-minds/SECURITY.md) ·
+See also: [Notices](https://github.com/lendmind-protocol/LMP/NOTICE.md) · [Security Policy](https://github.com/lendmind-protocol/LMP/SECURITY.md) ·
 
 ---
 
