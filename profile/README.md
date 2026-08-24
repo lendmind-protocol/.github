@@ -1,13 +1,5 @@
 <div align="center"><img src="/public/assets/banner.png" width="800" alt="Lending-Mind Protocol banner"></div>
 
-<p align="center">
-  <a href="https://github.com/lendmind-protocol/LMP/actions">CI</a> ·
-  <a href="./ARCHITECTURE.md">Architecture</a> ·
-  <a href="./CONTRIBUTING.md">Contributing</a> ·
-  <a href="./LICENSE">MIT License</a> ·
-  <a href="./SECURITY.md">Security</a>
-</p>
-
 LMP sits between an AI coding agent and its workspace. It loads an engineering
 profile, watches source changes, audits Rust syntax and code shape, and returns
 actionable violations before architectural drift becomes a merge.
